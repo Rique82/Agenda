@@ -1,13 +1,13 @@
 import api from "./api"
 
-export const getAtendimento = async () => {
-    const response = await api.get('/api/v1/atendimento')
+export const getAtendimentos = async () => {
+    const response = await api.get('/api/v1/atendimentos')
 
     if(response.status !== 200){
         return [] // throw new Error('')
     }
 
-    return response.data.atendimento
+    return response.data.atendimentos
 }
 
 export const createAtendimento = async (atendimento) => {
@@ -22,7 +22,7 @@ export const updateAtendimento = async (id, atendimento) => {
     return response
 }
 
-export const deleteUser = async (id) => {
+export const deleteAtendimento = async (id) => {
     const response = await api.delete(`/api/v1/atendimento/${id}`)
 
     return response

@@ -4,22 +4,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import './styles.css'
 import { toast } from "react-toastify";
 
-export default function UpdateUser() {
+export default function UpdateCliente() {
     const navigate = useNavigate()
-    const [user, setUser] = useState({
+    const [cliente, setCliente] = useState({
         nome: '',
         email: '',
         senha: '',
-        ativo: true
     })
-    // adicionar userLocation novo para pegar o state passado anteriormente
+    // adicionar clienteLocation novo para pegar o state passado anteriormente
     const location = useLocation()
-    const { user: prevUser } = location.state
+    const { cliente: prevCliente } = location.state
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setUser({
-            ...user,
+        setCliente({
+            ...cliente,
             [id]: value
         })
     }
@@ -27,17 +26,17 @@ export default function UpdateUser() {
     const handleReset = (e) => {
         e.preventDefault()
         // alterado do init para o prev
-        setUser({ ...prevUser, senha: '' })
+        setCliente({ ...prevCliente, senha: '' })
     }
 
     const handleSave = async (e) => {
         e.preventDefault()
         // Alterada função pra update
-        const response = await updateCliente(prevUser.id, user)
+        const response = await updateCliente(prevCliente.id, cliente)
 
         if (response.status === 200) {
-            navigate('/users')
-            toast("Usuário alterado com sucesso")
+            navigate('/clientes')
+            toast("Cliente alterado com sucesso")
         } else {
             toast("Erro ao criar Usuário")
             console.log(response)
@@ -46,7 +45,7 @@ export default function UpdateUser() {
 
     // Adicionado
     useEffect(() => {
-        setUser({ ...prevUser, senha: '' })
+        setCliente({ ...prevCliente, senha: '' })
     }, [])
 
     return (
@@ -54,15 +53,15 @@ export default function UpdateUser() {
             <form>
                 <div>
                     <label>Nome: </label>
-                    <input type="text" name="nome" id='nome' value={user.nome} onChange={handleChange} />
+                    <input type="text" name="nome" id='nome' value={cliente.nome} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Email: </label>
-                    <input type="email" name="email" id='email' value={user.email} onChange={handleChange} />
+                    <input type="email" name="email" id='email' value={cliente.email} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Senha: </label>
-                    <input type="password" name="senha" id='senha' value={user.senha} onChange={handleChange} />
+                    <input type="password" name="senha" id='senha' value={cliente.senha} onChange={handleChange} />
                 </div>
                 <div className="actions">
                     <button

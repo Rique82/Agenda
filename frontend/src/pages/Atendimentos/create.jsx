@@ -1,41 +1,41 @@
 import { useState } from "react"
-import { createCliente } from "../../api/clientes";
+import { createAtendimento } from "../../api/atendimentos";
 import { useNavigate } from "react-router-dom";
 import './styles.css'
 import { toast } from "react-toastify";
 
 const INITIAL_STATE = {
-    nome: '',
-    email: '',
-    senha: '',
-    ativo: true
+    dia: '',
+    hora: '',
+    valor: '',
+    concluido: false
 }
 
-export default function CreateCliente() {
+export default function CreateAtendimento() {
     const navigate = useNavigate()
-    const [cliente, setCliente] = useState(INITIAL_STATE)
+    const [atendimento, setAtendimento] = useState(INITIAL_STATE)
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setCliente({
-            ...cliente,
+        setAtendimento({
+            ...atendimento,
             [id]: value
         })
     }
 
     const handleReset = (e) => {
         e.preventDefault()
-        setCliente(INITIAL_STATE)
+        setAtendimento(INITIAL_STATE)
     }
 
     const handleSave = async (e) => {
         e.preventDefault()
         // seria idela validar os valores do objeto antes de enviar
-        const response = await createCliente(cliente)
+        const response = await createAtendimento(atendimento)
 
         if (response.status === 201) {
-            toast("Cliente criado com sucesso")
-            navigate('/clientes')
+            toast("atendimentos criado com sucesso")
+            navigate('/atendimentos')
         } else {
             toast("Erro ao criar Usuário")
             console.log(response)
@@ -46,16 +46,20 @@ export default function CreateCliente() {
         <div className="form">
             <form>
                 <div>
-                    <label>Nome: </label>
-                    <input type="text" name="nome" id='nome' value={cliente.nome} onChange={handleChange} />
+                    <label>dia: </label>
+                    <input type="text" name="dia" id='dia' value={atendimento.dia} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Email: </label>
-                    <input type="email" name="email" id='email' value={cliente.email} onChange={handleChange} />
+                    <label>hora: </label>
+                    <input type="text" name="hora" id='hora' value={atendimento.hora} onChange={handleChange} />
                 </div>
                 <div>
-                    <label>Senha: </label>
-                    <input type="password" name="senha" id='senha' value={cliente.senha} onChange={handleChange} />
+                    <label>valor: </label>
+                    <input type="text" name="valor" id='valor' value={atendimento.valor} onChange={handleChange} />
+                </div>
+                <div>
+                    <label>concluido: </label>
+                    <input type="text" name="concluido" id='concluido' value={atendimento.concluido} onChange={handleChange} />
                 </div>
                 <div className="actions">
                     <button

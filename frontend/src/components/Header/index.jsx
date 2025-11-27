@@ -16,15 +16,17 @@ export default function Header() {
                         Inicio
                     </button>
                 </Link>
-                {/* {
-                    !token
-                        ? null
-                        : <Link to='/users'>
-                            <button>
-                                Clientes
-                            </button>
-                        </Link>
-                } */}
+                <Link to='/clientes'>
+                    <button>
+                        Clientes
+                    </button>
+                </Link>
+                <Link to='/atendimentos'>
+                    <button>
+                        atendimentos
+                    </button>
+                </Link>
+
                 <Link to='/login'>
                     <button>
                         Login

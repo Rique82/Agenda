@@ -6,7 +6,7 @@ main {
     font-family: Arial, sans-serif;
 }
 
-.cliente-list {
+.atendimento-list {
     width: 100%;
     max-width: 600px;
     display: flex;
@@ -14,7 +14,7 @@ main {
     gap: 12px;
 }
 
-.cliente {
+.atendimento {
     display: flex;
     justify-content: space-between;
     padding: 14px 18px;
@@ -23,15 +23,15 @@ main {
     border-radius: 8px;
 }
 
-.cliente label {
+.atendimento label {
     font-size: 14px;
     color: #333;
 }
-.cliente .actions {
+.atendimento .actions {
     display: flex;
     gap: 10px
 }
-.cliente .actions button {
+.atendimento .actions button {
     background-color: #ddd;
     color: black;
     padding: 5px 10px;

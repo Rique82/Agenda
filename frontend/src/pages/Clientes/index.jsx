@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import './styles.css'
 import { toast } from 'react-toastify'
 
-function Users() {
+function Clientes() {
     const navigate = useNavigate()
-    const [users, setUsers] = useState([])
+    const [clientes, setClientes] = useState([])
 
-    const handleUpdate = async (user) => {
-        navigate('/update/user', { state: { user } })
+    const handleUpdate = async (cliente) => {
+        navigate('/update/cliente', { state: { cliente } })
     }
 
     const handleDelete = async (id) => {
@@ -20,47 +20,47 @@ function Users() {
             return
         }
 
-        setUsers(users => users.filter(user => user.id !== id))
+        setClientes(clientes => clientes.filter(cliente => cliente.id !== id))
     }
 
     useEffect(() => {
         async function carregar() {
-            const allUsers = await getClientes()
-            setUsers(allUsers)
+            const todosclientes = await getClientes()
+            setClientes(todosclientes)
         }
         carregar()
     }, [])
 
     return (
         <main>
-            <div className='user-list'>
+            <div className='cliente-list'>
                 <div>
-                    <Link to={'/create/user'}>
+                    <Link to={'/create/cliente'}>
                         <button>Criar</button>
                     </Link>
                 </div>
-                <div className='user header' key='header'>
+                <div className='cliente header' key='header'>
                     <label>Nome</label>
                     <label>Email</label>
                     <label>Ações</label>
                 </div>
                 {
-                    users.length == 0
-                        ? <div className='user'>
+                    clientes.length == 0
+                        ? <div className='cliente'>
                             <label>Não tem ngm</label>
                         </div>
-                        : users.map(user =>
-                            <div className='user' key={user.id}>
-                                <label>{user.nome}</label>
-                                <label>{user.email}</label>
+                        : clientes.map(cliente =>
+                            <div className='cliente' key={cliente.id}>
+                                <label>{cliente.nome}</label>
+                                <label>{cliente.email}</label>
                                 <div className='actions'>
                                     <button
                                         type='button'
-                                        onClick={() => handleUpdate(user)}
+                                        onClick={() => handleUpdate(cliente)}
                                     >Alterar</button>
                                     <button
                                         type='button'
-                                        onClick={() => handleDelete(user.id)}
+                                        onClick={() => handleDelete(cliente.id)}
                                     >Deleta</button>
                                 </div>
                             </div>)
@@ -70,4 +70,4 @@ function Users() {
     )
 }
 
-export default Users
+export default Clientes

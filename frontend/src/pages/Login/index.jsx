@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react';
 import './styles.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginCliente } from '../../api/clientes';
 import { toast } from 'react-toastify';
 // import { AuthContext } from '../../auth/Context';
 
 export default function Login() {
-    const { login } = useContext(AuthContext) 
+    // const { login } = useContext(AuthContext) 
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -21,8 +21,8 @@ export default function Login() {
         try {
             const response = await loginCliente(email, senha)
             console.log(response)
-            login(response.data.token)
-            navigate('/users')
+            // Login(response.data.token)
+            navigate('/clientes')
         } catch (error) {
             toast("Email ou senha inválidos")
         }
@@ -40,7 +40,7 @@ export default function Login() {
                     <label htmlFor="senha">Senha:</label>
                     <input type="password" id="senha" required value={senha} onChange={(e) => setSenha(e.target.value)} />
                 </div>
-                <p>Não possui conta? <spam className="signup">Cadastre-se</spam></p>
+                <p>Não possui conta? <Link to={"/Create/cliente"}><spam className="signup">Cadastre-se</spam></Link> </p>
                 <button className="button"
                     type="submit"
                     onClick={handleLogin}
