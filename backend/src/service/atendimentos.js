@@ -6,6 +6,10 @@ const SALT = 10
 
 class ServiceAtendimento {
 
+    async FindAllCliente(clienteId){
+        return Atendimento.findAll({ where: {idCliente: clienteId}})
+    }
+
     async FindAll(){
         return Atendimento.findAll()
     }

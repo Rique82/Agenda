@@ -43,31 +43,47 @@ export default function CreateCliente() {
     }
 
     return (
-        <div className="form">
-            <form>
-                <div>
-                    <label>Nome: </label>
-                    <input type="text" name="nome" id='nome' value={cliente.nome} onChange={handleChange} />
+        <div className="form-container">
+            <form className="form-box">
+                <div className="form-group">
+                    <label>Nome:</label>
+                    <input
+                        type="text"
+                        name="nome"
+                        id="nome"
+                        value={cliente.nome}
+                        onChange={handleChange}
+                    />
                 </div>
-                <div>
-                    <label>Email: </label>
-                    <input type="email" name="email" id='email' value={cliente.email} onChange={handleChange} />
+
+                <div className="form-group">
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        value={cliente.email}
+                        onChange={handleChange}
+                    />
                 </div>
-                <div>
-                    <label>Senha: </label>
-                    <input type="password" name="senha" id='senha' value={cliente.senha} onChange={handleChange} />
+
+                <div className="form-group">
+                    <label>Senha:</label>
+                    <input
+                        type="password"
+                        name="senha"
+                        id="senha"
+                        value={cliente.senha}
+                        onChange={handleChange}
+                    />
                 </div>
-                <div className="actions">
-                    <button
-                        type="reset"
-                        onClick={handleReset}
-                    >Limpar</button>
-                    <button
-                        type="submit"
-                        onClick={handleSave}
-                    >Enviar</button>
+
+                <div className="form-actions">
+                    <button type="reset" onClick={handleReset} className="btn-reset">Limpar</button>
+                    <button type="submit" onClick={handleSave} className="btn-submit">Enviar</button>
                 </div>
             </form>
         </div>
+
     )
 }

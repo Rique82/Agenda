@@ -43,35 +43,59 @@ export default function CreateAtendimento() {
     }
 
     return (
-        <div className="form">
-            <form>
-                <div>
-                    <label>dia: </label>
-                    <input type="text" name="dia" id='dia' value={atendimento.dia} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>hora: </label>
-                    <input type="text" name="hora" id='hora' value={atendimento.hora} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>valor: </label>
-                    <input type="text" name="valor" id='valor' value={atendimento.valor} onChange={handleChange} />
-                </div>
-                <div>
-                    <label>concluido: </label>
-                    <input type="text" name="concluido" id='concluido' value={atendimento.concluido} onChange={handleChange} />
-                </div>
-                <div className="actions">
-                    <button
-                        type="reset"
-                        onClick={handleReset}
-                    >Limpar</button>
-                    <button
-                        type="submit"
-                        onClick={handleSave}
-                    >Enviar</button>
-                </div>
-            </form>
+        <div className="form-container">
+    <form className="form-box">
+
+        <div className="form-group">
+            <label>Dia:</label>
+            <input
+                type="text"
+                name="dia"
+                id="dia"
+                value={atendimento.dia}
+                onChange={handleChange}
+            />
         </div>
+
+        <div className="form-group">
+            <label>Hora:</label>
+            <input
+                type="text"
+                name="hora"
+                id="hora"
+                value={atendimento.hora}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Valor:</label>
+            <input
+                type="text"
+                name="valor"
+                id="valor"
+                value={atendimento.valor}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Concluído:</label>
+            <input
+                type="text"
+                name="concluido"
+                id="concluido"
+                value={atendimento.concluido}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-actions">
+            <button type="reset" onClick={handleReset} className="btn-reset">Limpar</button>
+            <button type="submit" onClick={handleSave} className="btn-submit">Enviar</button>
+        </div>
+
+    </form>
+</div>
     )
 }

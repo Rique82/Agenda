@@ -1,37 +1,15 @@
 import { Link } from 'react-router-dom'
 import './style.css'
-// import { AuthContext } from '../../auth/Context'
-// import { useContext } from 'react'
 
 export default function Header() {
-    // //pegar o token
-    // const { token } = useContext(AuthContext)
-
     return (
-        <header>
-            <h1>Minha API - Avaliação</h1>
-            <nav>
-                <Link to='/'>
-                    <button>
-                        Inicio
-                    </button>
-                </Link>
-                <Link to='/clientes'>
-                    <button>
-                        Clientes
-                    </button>
-                </Link>
-                <Link to='/atendimentos'>
-                    <button>
-                        atendimentos
-                    </button>
-                </Link>
-
-                <Link to='/login'>
-                    <button>
-                        Login
-                    </button>
-                </Link>
+        <header className="header">
+            <h1 className="header-title">Minha API - Avaliação</h1>
+            <nav className="header-nav">
+                <Link to='/'><button className="nav-button">Início</button></Link>
+                <Link to='/clientes'><button className="nav-button">Clientes</button></Link>
+                <Link to='/atendimentos'><button className="nav-button">Atendimentos</button></Link>
+                <Link to='/login'><button className="nav-button">Login</button></Link>
             </nav>
         </header>
     )
