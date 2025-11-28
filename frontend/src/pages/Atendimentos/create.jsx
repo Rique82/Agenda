@@ -44,7 +44,7 @@ export default function CreateAtendimento() {
 
     return (
         <div className="form-container">
-    <form className="form-box">
+         <form className="form-box">
 
         <div className="form-group">
             <label>Dia:</label>
