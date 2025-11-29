@@ -11,7 +11,7 @@ class Database {
             host: process.env.DBhost ?? 'localhost',
             username: process.env.DBusername ?? 'root',
             password: process.env.DBpassword  ?? '',
-            dialect: process.env.dialect  ?? 'mysql'
+            dialect: process.env.Dialect  ?? 'mysql'
         })
     }
 }
