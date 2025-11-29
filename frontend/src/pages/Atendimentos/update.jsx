@@ -1,0 +1,108 @@
+import { useEffect, useState } from "react"
+import { updateAtendimento } from "../../api/atendimentos";
+import { useLocation, useNavigate } from "react-router-dom";
+import './styles.css'
+import { toast } from "react-toastify";
+
+export default function UpdateAtendimento() {
+    const navigate = useNavigate()
+    const [atendimento, setAtendimento] = useState({
+        dia: '',
+        hora: '',
+        valor: '',
+        concluido: false
+    })
+   
+    const location = useLocation()
+    const { atendimento: prevAtendimento } = location.state
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setAtendimento({
+            ...atendimento,
+            [id]: value
+        })
+    }
+
+    const handleReset = (e) => {
+        e.preventDefault()
+       
+        setAtendimento(prevAtendimento)
+    }
+
+    const handleSave = async (e) => {
+        e.preventDefault()
+       
+        const response = await updateAtendimento(prevAtendimento.id, atendimento)
+
+        if (response.status === 200) {
+            navigate('/atendimentos')
+            toast("Atendimento alterado com sucesso")
+        } else {
+            toast("Erro ao criar Atendimento")
+            console.log(response)
+        }
+    }
+
+   
+    useEffect(() => {
+        setAtendimento(prevAtendimento)
+    }, [])
+
+    return (
+        <div className="form-container">
+         <form className="form-box">
+
+        <div className="form-group">
+            <label>Dia:</label>
+            <input
+                type="text"
+                name="dia"
+                id="dia"
+                value={atendimento.dia}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Hora:</label>
+            <input
+                type="text"
+                name="hora"
+                id="hora"
+                value={atendimento.hora}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Valor:</label>
+            <input
+                type="text"
+                name="valor"
+                id="valor"
+                value={atendimento.valor}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-group">
+            <label>Concluído:</label>
+            <input
+                type="text"
+                name="concluido"
+                id="concluido"
+                value={atendimento.concluido}
+                onChange={handleChange}
+            />
+        </div>
+
+        <div className="form-actions">
+            <button type="reset" onClick={handleReset} className="btn-reset">Limpar</button>
+            <button type="submit" onClick={handleSave} className="btn-submit">Enviar</button>
+        </div>
+
+    </form>
+</div>
+    )
+}

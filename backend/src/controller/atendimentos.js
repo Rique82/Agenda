@@ -1,6 +1,19 @@
-import ServiceAtendimento from "../service/Atendimentos.js"
+import ServiceAtendimento from "../service/atendimentos.js"
 
 class ControllerAtendimento {
+
+    async FindAllCliente(req, res) {
+        try {
+            const idCliente = req.params.idCliente
+            const Resultado = await ServiceAtendimento.FindAll(idCliente)
+            console.log(Resultado)
+            res.status(200).send({ Resultado })
+
+        } catch (error) {
+            res.status(500).send({ error: error.message })
+        }
+
+    }
 
     async FindAll(_, res) {
         try {
@@ -30,6 +43,7 @@ class ControllerAtendimento {
 
     async Create(req, res) {
         try {
+            
             const { dia, hora, valor, concluido } = req.body
             await ServiceAtendimento.Create(dia, hora, valor, concluido)
             res.status(201).send("atendimento criado com sucesso")

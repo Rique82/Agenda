@@ -1,5 +1,5 @@
 import express from "express"
-import router from "./router/users.js"
+import router from "./router/clientes.js"
 import router2 from "./router/atendimento.js"
 import database from "./config/database.js"
 import cors from 'cors'

@@ -1,0 +1,42 @@
+.header {
+    width: 100%;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e3e3;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #413ccf;
+}
+
+.header-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #6c63ff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.nav-button:hover {
+    background: #5a53db;
+}
+
+/* Remove underline dos links */
+.header-nav a {
+    text-decoration: none;
+}
