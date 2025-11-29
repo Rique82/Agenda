@@ -8,7 +8,7 @@ class Database {
     init(){
         this.db = new Sequelize({
             database: process.env.DBname ?? 'agenda',
-            host: process.env.DBhost ?? 'localhost',
+            host: process.env.DBHost ?? 'localhost',
             username: process.env.DBusername ?? 'root',
             password: process.env.DBpassword  ?? '',
             dialect: process.env.Dialect  ?? 'mysql'
